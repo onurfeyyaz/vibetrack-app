@@ -241,10 +241,10 @@
     <div class="f-row">
       <a class="brand" href="{{root}}{{home_path}}"><img src="{{root}}assets/img/icon-64.png" width="32" height="32" alt="">Vibe Track</a>
       <nav class="f-links" aria-label="{{footer_label}}">
-        <a href="https://onurfeyyaz.github.io/vibetrack-legal/privacy-policy.html">{{f_privacy}}</a>
-        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">{{f_terms}}</a>
-        <a href="https://onurfeyyaz.github.io/vibetrack-legal/">{{f_support}}</a>
-        <a href="mailto:wipastudios@gmail.com">{{f_contact}}</a>
+        <a href="https://onurfeyyaz.github.io/vibetrack-legal/privacy-policy.html" data-out="privacy">{{f_privacy}}</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" data-out="terms">{{f_terms}}</a>
+        <a href="https://onurfeyyaz.github.io/vibetrack-legal/" data-out="support">{{f_support}}</a>
+        <a href="mailto:wipastudios@gmail.com" data-out="contact">{{f_contact}}</a>
         <a href="{{other_lang_href}}" hreflang="{{other_lang}}" lang="{{other_lang}}">{{other_lang_label}}</a>
       </nav>
     </div>
@@ -282,7 +282,38 @@
     new IntersectionObserver(function (es) { heroGone = !es[0].isIntersecting; upd(); }).observe(hero);
     new IntersectionObserver(function (es) { closeIn = es[0].isIntersecting; upd(); }).observe(close);
   }
+  // Olaylar (GoatCounter). Kisisel veri yok: yalnizca sabit olay adlari.
+  var lang = document.documentElement.lang === 'tr' ? 'tr' : 'en';
+  var sent = {};
+  var ev = function (name, once) {
+    if (once) { if (sent[name]) return; sent[name] = 1; }
+    var g = window.goatcounter;
+    if (g && g.count) g.count({ path: name, title: name, event: true });
+  };
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a');
+    if (!a) return;
+    if (a.dataset.ev) ev('download-' + a.dataset.ev + '-' + lang);
+    else if (a.dataset.out) ev('out-' + a.dataset.out + '-' + lang);
+    else if (a.hasAttribute('hreflang')) ev('lang-switch-' + lang + '-to-' + a.getAttribute('hreflang'));
+  });
+  document.querySelectorAll('.faq details').forEach(function (d, i) {
+    d.addEventListener('toggle', function () { if (d.open) ev('faq-' + (i + 1) + '-' + lang, true); });
+  });
+  if (io) {
+    var marks = { 'cloud-h': 'moods', 'atlas-h': 'features', 'pv-h': 'privacy', 'pr-h': 'pricing', 'faq-h': 'faq' };
+    var seen = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var k = e.target.id ? marks[e.target.id] : 'closing';
+        ev('seen-' + k + '-' + lang, true); seen.unobserve(e.target);
+      });
+    }, { threshold: 0.6 });
+    Object.keys(marks).forEach(function (id) { var el = document.getElementById(id); if (el) seen.observe(el); });
+    if (close) seen.observe(close);
+  }
 })();
 </script>
+{{gc_script}}
 </body>
 </html>

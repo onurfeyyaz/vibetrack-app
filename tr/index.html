@@ -181,7 +181,7 @@
         <span class="eyebrow">Gizlilik</span>
         <h2 id="pv-h">Yazdığın hiçbir şey <em>analitiğe gitmez.</em></h2>
         <p class="lede">Bir duygu günlüğü ancak içinde dürüst olabilirsen işe yarar. Bu yüzden çizgiyi önemli olan yere çektik.</p>
-        <p class="p-note">Bu web sitesinde izleyici yok, çerez yok.</p>
+        <p class="p-note">Bu web sitesi çerez kullanmaz. Ziyaretler GoatCounter ile anonim sayılır; IP adresin saklanmaz.</p>
       </div>
       <ul class="p-list">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.3-7.5 9.5-4.3-1.2-7.5-4.9-7.5-9.5V6L12 3z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.4"/></svg>Notların asla analitiğe gönderilmez</li>
@@ -244,10 +244,10 @@
     <div class="f-row">
       <a class="brand" href="../tr/"><img src="../assets/img/icon-64.png" width="32" height="32" alt="">Vibe Track</a>
       <nav class="f-links" aria-label="Alt menü">
-        <a href="https://onurfeyyaz.github.io/vibetrack-legal/privacy-policy.html">Gizlilik</a>
-        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Kullanım Koşulları</a>
-        <a href="https://onurfeyyaz.github.io/vibetrack-legal/">Destek</a>
-        <a href="mailto:wipastudios@gmail.com">İletişim</a>
+        <a href="https://onurfeyyaz.github.io/vibetrack-legal/privacy-policy.html" data-out="privacy">Gizlilik</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" data-out="terms">Kullanım Koşulları</a>
+        <a href="https://onurfeyyaz.github.io/vibetrack-legal/" data-out="support">Destek</a>
+        <a href="mailto:wipastudios@gmail.com" data-out="contact">İletişim</a>
         <a href="../" hreflang="en" lang="en">English</a>
       </nav>
     </div>
@@ -285,7 +285,38 @@
     new IntersectionObserver(function (es) { heroGone = !es[0].isIntersecting; upd(); }).observe(hero);
     new IntersectionObserver(function (es) { closeIn = es[0].isIntersecting; upd(); }).observe(close);
   }
+  // Olaylar (GoatCounter). Kisisel veri yok: yalnizca sabit olay adlari.
+  var lang = document.documentElement.lang === 'tr' ? 'tr' : 'en';
+  var sent = {};
+  var ev = function (name, once) {
+    if (once) { if (sent[name]) return; sent[name] = 1; }
+    var g = window.goatcounter;
+    if (g && g.count) g.count({ path: name, title: name, event: true });
+  };
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a');
+    if (!a) return;
+    if (a.dataset.ev) ev('download-' + a.dataset.ev + '-' + lang);
+    else if (a.dataset.out) ev('out-' + a.dataset.out + '-' + lang);
+    else if (a.hasAttribute('hreflang')) ev('lang-switch-' + lang + '-to-' + a.getAttribute('hreflang'));
+  });
+  document.querySelectorAll('.faq details').forEach(function (d, i) {
+    d.addEventListener('toggle', function () { if (d.open) ev('faq-' + (i + 1) + '-' + lang, true); });
+  });
+  if (io) {
+    var marks = { 'cloud-h': 'moods', 'atlas-h': 'features', 'pv-h': 'privacy', 'pr-h': 'pricing', 'faq-h': 'faq' };
+    var seen = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var k = e.target.id ? marks[e.target.id] : 'closing';
+        ev('seen-' + k + '-' + lang, true); seen.unobserve(e.target);
+      });
+    }, { threshold: 0.6 });
+    Object.keys(marks).forEach(function (id) { var el = document.getElementById(id); if (el) seen.observe(el); });
+    if (close) seen.observe(close);
+  }
 })();
 </script>
+<script data-goatcounter="https://vibetrack-app.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

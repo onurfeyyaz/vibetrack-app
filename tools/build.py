@@ -22,6 +22,10 @@ SITE = "https://onurfeyyaz.github.io/vibetrack-app/"
 # yalnizca kaynak sayilmaz). Tarif: docs/kampanya-linki.md
 PT = ""
 
+# GoatCounter site kodu: https://<GC_CODE>.goatcounter.com (cerezsiz sayim).
+# Bos birakilirsa analitik scripti hic eklenmez. Tarif: docs/analitik.md
+GC_CODE = "vibetrack-app"
+
 def store_url(ct: str) -> str:
     base = f"https://apps.apple.com/app/apple-store/id{APP_ID}"
     if not PT:
@@ -93,7 +97,7 @@ EN = dict(
     pv_eyebrow="Privacy",
     pv_h2="Nothing you write goes to <em>our analytics.</em>",
     pv_lede="A mood journal only works if you can be honest in it. So we drew the line where it matters.",
-    pv_site_note="This website has no trackers and sets no cookies.",
+    pv_site_note="This website sets no cookies. Visits are counted anonymously with GoatCounter, which never stores your IP address.",
     pv_1="Your notes are never sent to analytics",
     pv_2="Works with no account at all",
     pv_3="Apple Health is read only if you connect it",
@@ -175,7 +179,7 @@ TR = dict(
     pv_eyebrow="Gizlilik",
     pv_h2="Yazdığın hiçbir şey <em>analitiğe gitmez.</em>",
     pv_lede="Bir duygu günlüğü ancak içinde dürüst olabilirsen işe yarar. Bu yüzden çizgiyi önemli olan yere çektik.",
-    pv_site_note="Bu web sitesinde izleyici yok, çerez yok.",
+    pv_site_note="Bu web sitesi çerez kullanmaz. Ziyaretler GoatCounter ile anonim sayılır; IP adresin saklanmaz.",
     pv_1="Notların asla analitiğe gönderilmez",
     pv_2="Hiç hesap açmadan çalışır",
     pv_3="Apple Health yalnızca bağlarsan okunur",
@@ -299,6 +303,7 @@ def build(t, moods, ver):
         mood_rows=mood_rows(moods, lang), family_cards=family_cards(moods, lang),
         free_items="".join(f"<li><span>{x}</span></li>" for x in t["free_list"]),
         pro_items="".join(f"<li><span>{x}</span></li>" for x in t["pro_list"]),
+        gc_script=(f'<script data-goatcounter="https://{GC_CODE}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>' if GC_CODE else ""),
         faq_items="".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in t["faq"]),
     )
     a = ALTS[lang]

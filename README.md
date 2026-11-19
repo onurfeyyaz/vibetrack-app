@@ -2,7 +2,7 @@
 
 https://onurfeyyaz.github.io/vibetrack-app/ (EN) · `/tr/` (TR)
 
-Statik HTML, izleyici ve çerez yok, üçüncü taraf script yok.
+Statik HTML, çerez yok. Tek üçüncü taraf script GoatCounter (çerezsiz ziyaret ve tıklama sayımı); ayrıntı `docs/analitik.md`.
 
 - `src/` — şablon, stil, mood listesi (uygulamadan)
 - `tools/prep_assets.py` — ekran görüntüleri (webp), ikonlar, OG kartları
