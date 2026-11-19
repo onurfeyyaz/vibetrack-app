@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="{{lang}}" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{meta_title}}</title>
+<meta name="description" content="{{meta_desc}}">
+<link rel="canonical" href="{{canonical}}">
+<link rel="alternate" hreflang="en" href="{{site}}">
+<link rel="alternate" hreflang="tr" href="{{site}}tr/">
+<link rel="alternate" hreflang="x-default" href="{{site}}">
+<meta name="apple-itunes-app" content="app-id={{app_id}}">
+<meta name="theme-color" content="#F7F5FF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F0E17" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vibe Track">
+<meta property="og:title" content="{{meta_title}}">
+<meta property="og:description" content="{{meta_desc}}">
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:image" content="{{site}}assets/img/og-{{lang}}.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="{{og_locale}}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="{{root}}assets/img/icon-64.png" type="image/png">
+<link rel="apple-touch-icon" href="{{root}}assets/img/icon-180.png">
+<link rel="stylesheet" href="{{root}}assets/styles.css?v={{ver}}">
+<script>document.documentElement.classList.remove('no-js')</script>
+<script type="application/ld+json">{{jsonld}}</script>
+</head>
+<body>
+<a class="skip" href="#main">{{skip}}</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="{{root}}{{home_path}}"><img src="{{root}}assets/img/icon-64.png" width="32" height="32" alt="">Vibe Track</a>
+    <nav aria-label="{{nav_label}}">
+      <a class="lang" href="{{other_lang_href}}" hreflang="{{other_lang}}" lang="{{other_lang}}">{{other_lang_label}}</a>
+      <a class="btn" href="{{store_url_nav}}" data-ev="nav">{{cta_short}}</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">{{hero_eyebrow}}</span>
+      <h1><span class="num grad">149</span>{{hero_h1}}</h1>
+      <p class="lede">{{hero_lede}}</p>
+      <div class="cta-row">
+        <a class="badge" href="{{store_url_hero}}" data-ev="hero">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="{{root}}assets/img/badge-{{badge_lang}}-white.svg">
+            <img src="{{root}}assets/img/badge-{{badge_lang}}-black.svg" alt="{{badge_alt}}" width="168" height="56">
+          </picture>
+        </a>
+        <div class="qr" aria-hidden="true">
+          <div class="code">{{qr_svg}}</div>
+          <small>{{qr_note}}</small>
+        </div>
+      </div>
+      <p class="fine">{{hero_fine}}</p>
+      <ul class="chips">
+        <li>{{check}}{{chip_1}}</li>
+        <li>{{check}}{{chip_2}}</li>
+        <li>{{check}}{{chip_3}}</li>
+      </ul>
+    </div>
+    <div class="hero-visual">
+      <div class="phone float">{{shot_hero}}</div>
+    </div>
+  </div>
+</section>
+
+<!-- MOOD CLOUD -->
+<section class="cloud" aria-labelledby="cloud-h">
+  <div class="wrap">
+    <span class="eyebrow">{{cloud_eyebrow}}</span>
+    <h2 id="cloud-h">{{cloud_h2}}</h2>
+    <p class="lede">{{cloud_lede}}</p>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    {{mood_rows}}
+  </div>
+  <p class="sr">{{cloud_sr}}</p>
+  <p class="count-line wrap">{{cloud_count}}</p>
+</section>
+
+<!-- ATLAS -->
+<section class="feature" style="--accent: var(--home)" aria-labelledby="atlas-h">
+  <div class="wrap f-grid">
+    <div class="f-text reveal">
+      <span class="eyebrow">{{atlas_eyebrow}}</span>
+      <h2 id="atlas-h">{{atlas_h2}}</h2>
+      <p class="lede">{{atlas_lede}}</p>
+      <div class="families">{{family_cards}}</div>
+    </div>
+    <div class="f-visual reveal"><div class="phone">{{shot_atlas}}</div></div>
+  </div>
+</section>
+
+<!-- CORRELATIONS -->
+<section class="feature flip" style="--accent: var(--insights)" aria-labelledby="corr-h">
+  <div class="wrap f-grid">
+    <div class="f-text reveal">
+      <span class="eyebrow">{{corr_eyebrow}} <span class="pill">Premium</span></span>
+      <h2 id="corr-h">{{corr_h2}}</h2>
+      <p class="lede">{{corr_lede}}</p>
+      <ul class="ticks">
+        <li><span>{{corr_t1}}</span></li>
+        <li><span>{{corr_t2}}</span></li>
+        <li><span>{{corr_t3}}</span></li>
+      </ul>
+    </div>
+    <div class="f-visual reveal"><div class="phone">{{shot_corr}}</div></div>
+  </div>
+</section>
+
+<!-- PROGRESS -->
+<section class="feature" style="--accent: var(--streak)" aria-labelledby="prog-h">
+  <div class="wrap f-grid">
+    <div class="f-text reveal">
+      <span class="eyebrow">{{prog_eyebrow}}</span>
+      <h2 id="prog-h">{{prog_h2}}</h2>
+      <p class="lede">{{prog_lede}}</p>
+      <ul class="ticks">
+        <li><span>{{prog_t1}}</span></li>
+        <li><span>{{prog_t2}}</span></li>
+        <li><span>{{prog_t3}}</span></li>
+      </ul>
+    </div>
+    <div class="f-visual reveal"><div class="phone">{{shot_prog}}</div></div>
+  </div>
+</section>
+
+<!-- FRIENDS -->
+<section class="feature flip" style="--accent: var(--friends)" aria-labelledby="fr-h">
+  <div class="wrap f-grid">
+    <div class="f-text reveal">
+      <span class="eyebrow">{{fr_eyebrow}}</span>
+      <h2 id="fr-h">{{fr_h2}}</h2>
+      <p class="lede">{{fr_lede}}</p>
+      <ul class="ticks">
+        <li><span>{{fr_t1}}</span></li>
+        <li><span>{{fr_t2}}</span></li>
+        <li><span>{{fr_t3}}</span></li>
+      </ul>
+    </div>
+    <div class="f-visual reveal"><div class="phone">{{shot_friends}}</div></div>
+  </div>
+</section>
+
+<!-- CHAPTERS -->
+<section class="feature" style="--accent: var(--ranking)" aria-labelledby="ch-h">
+  <div class="wrap f-grid">
+    <div class="f-text reveal">
+      <span class="eyebrow">{{ch_eyebrow}} <span class="pill">Premium</span></span>
+      <h2 id="ch-h">{{ch_h2}}</h2>
+      <p class="lede">{{ch_lede}}</p>
+      <ul class="ticks">
+        <li><span>{{ch_t1}}</span></li>
+        <li><span>{{ch_t2}}</span></li>
+      </ul>
+    </div>
+    <div class="f-visual reveal"><div class="phone">{{shot_chapters}}</div></div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section class="privacy" aria-labelledby="pv-h" style="--accent: var(--success)">
+  <div class="wrap">
+    <div class="privacy-card reveal">
+      <div>
+        <span class="eyebrow">{{pv_eyebrow}}</span>
+        <h2 id="pv-h">{{pv_h2}}</h2>
+        <p class="lede">{{pv_lede}}</p>
+        <p class="p-note">{{pv_site_note}}</p>
+      </div>
+      <ul class="p-list">
+        <li>{{shield}}{{pv_1}}</li>
+        <li>{{shield}}{{pv_2}}</li>
+        <li>{{shield}}{{pv_3}}</li>
+        <li>{{shield}}{{pv_4}}</li>
+        <li>{{shield}}{{pv_5}}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" aria-labelledby="pr-h">
+  <div class="wrap">
+    <span class="eyebrow">{{pr_eyebrow}}</span>
+    <h2 id="pr-h">{{pr_h2}}</h2>
+    <p class="lede" style="margin-inline:auto">{{pr_lede}}</p>
+    <div class="plans">
+      <div class="plan reveal">
+        <h3>{{pr_free}} <span class="price">{{pr_free_price}}</span></h3>
+        <ul>{{free_items}}</ul>
+      </div>
+      <div class="plan pro reveal">
+        <h3>Premium <span class="price">{{pr_pro_price}}</span></h3>
+        <ul>{{pro_items}}</ul>
+      </div>
+    </div>
+    <p class="legal-small">{{pr_legal}}</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="eyebrow">{{faq_eyebrow}}</span>
+      <h2 id="faq-h">{{faq_h2}}</h2>
+    </div>
+    <div>{{faq_items}}</div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="wrap">
+    <div class="closing-card reveal">
+      <img class="icon" src="{{root}}assets/img/icon-180.png" width="88" height="88" alt="">
+      <h2>{{close_h2}}</h2>
+      <p>{{close_p}}</p>
+      <a class="btn big" href="{{store_url_close}}" data-ev="closing">{{apple}}{{close_cta}}</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-row">
+      <a class="brand" href="{{root}}{{home_path}}"><img src="{{root}}assets/img/icon-64.png" width="32" height="32" alt="">Vibe Track</a>
+      <nav class="f-links" aria-label="{{footer_label}}">
+        <a href="https://onurfeyyaz.github.io/vibetrack-legal/privacy-policy.html">{{f_privacy}}</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">{{f_terms}}</a>
+        <a href="https://onurfeyyaz.github.io/vibetrack-legal/">{{f_support}}</a>
+        <a href="mailto:wipastudios@gmail.com">{{f_contact}}</a>
+        <a href="{{other_lang_href}}" hreflang="{{other_lang}}" lang="{{other_lang}}">{{other_lang_label}}</a>
+      </nav>
+    </div>
+    <p>{{f_medical}}</p>
+    <p class="tm">© {{year}} Wipa Studio. {{f_tm}}</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky" aria-hidden="true">
+  <img src="{{root}}assets/img/icon-180.png" width="40" height="40" alt="">
+  <div><b>Vibe Track</b><small>{{sticky_sub}}</small></div>
+  <a class="btn" href="{{store_url_sticky}}" data-ev="sticky" tabindex="-1">{{cta_short}}</a>
+</div>
+
+<script>
+(function () {
+  var io = 'IntersectionObserver' in window;
+  var els = document.querySelectorAll('.reveal');
+  if (io) {
+    var o = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); o.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    els.forEach(function (el) { o.observe(el); });
+  } else { els.forEach(function (el) { el.classList.add('in'); }); }
+
+  var s = document.getElementById('sticky'), hero = document.querySelector('.hero'), close = document.querySelector('.closing');
+  if (io && s) {
+    var heroGone = false, closeIn = false;
+    var upd = function () {
+      var on = heroGone && !closeIn;
+      s.classList.toggle('show', on);
+      s.setAttribute('aria-hidden', on ? 'false' : 'true');
+      s.querySelector('a').tabIndex = on ? 0 : -1;
+    };
+    new IntersectionObserver(function (es) { heroGone = !es[0].isIntersecting; upd(); }).observe(hero);
+    new IntersectionObserver(function (es) { closeIn = es[0].isIntersecting; upd(); }).observe(close);
+  }
+})();
+</script>
+</body>
+</html>
